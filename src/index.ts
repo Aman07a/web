@@ -1,10 +1,6 @@
-import { User, UserProps } from "./Models/User";
-import { Collection } from "./Models/Collection";
+import { User } from "./models/User";
 
-const collection = new Collection<User, UserProps>(
-  "http://localhost:3000/users",
-  (json: UserProps) => User.buildUser(json)
-);
+const collection = User.buildUserCollection();
 
 collection.on("change", () => {
   console.log(collection);
