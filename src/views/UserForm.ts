@@ -9,9 +9,9 @@ export class UserForm {
     };
   }
 
-  onSetAgeClick(): void {
-    console.log("button was clicked");
-  }
+  onSetAgeClick = (): void => {
+    this.model.setRandomAge();
+  };
 
   template(): string {
     return `
@@ -32,7 +32,7 @@ export class UserForm {
     for (let eventKey in eventsMap) {
       const [eventName, selector] = eventKey.split(":");
 
-      fragment.querySelectorAll(".set-age").forEach((element) => {
+      fragment.querySelectorAll(selector).forEach((element) => {
         element.addEventListener(eventName, eventsMap[eventKey]);
       });
     }
