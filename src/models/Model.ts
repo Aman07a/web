@@ -1,7 +1,7 @@
 import { AxiosPromise, AxiosResponse } from "axios";
 
 interface ModelAttributes<T> {
-  set(update: T): void;
+  set(value: T): void;
   getAll(): T;
   get<K extends keyof T>(key: K): T[K];
 }
@@ -16,11 +16,11 @@ interface Events {
   trigger(eventName: string): void;
 }
 
-interface hasId {
+export interface HasId {
   id?: number;
 }
 
-export class Model<T extends hasId> {
+export class Model<T extends HasId> {
   constructor(
     private attributes: ModelAttributes<T>,
     private events: Events,
